@@ -8,7 +8,7 @@ services:
       args:
         - POSTGRES_USER=${POSTGRES_USER}
         - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
-        - POSTGRES_DB=${POSTGRES_DB}
+        - POSTGRES_DB=postgres_db
         - POSTGRES_IP=postgres
         - REDIS_IP=redis
         - MONGO_IP=mongodb
@@ -27,12 +27,24 @@ services:
     depends_on:
       - backend
 
+  nginx:
+    image: nginx:alpine
+    container_name: nginx
+    ports:
+      - "8090:8090"
+    volumes:
+      - ./nginx/nginx.conf.template:/nginx.conf.template:rwx
+      - ./nginx/entrypoint.sh:/entrypoint.sh:rwx
+    entrypoint: ["/entrypoint.sh"]
+    depends_on:
+      - frontend
+
   postgres:
     image: postgres:15
     environment:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-      POSTGRES_DB: postgres_db
+      POSTGRES_DB: ${POSTGRES_DB}
     ports:
       - "5432:5432"
     volumes:

@@ -36,7 +36,7 @@ RUN echo "export POSTGRES_USER=${POSTGRES_USER}" >> variables.sh \
     && echo "export POSTGRES_DB=${POSTGRES_DB}" >> variables.sh \
     && echo "export POSTGRES_IP=${POSTGRES_IP}" >> variables.sh \
     && echo "export REDIS_IP=${REDIS_IP}" >> variables.sh \
-    && echo "export MONGO_IP=${MONGO_IP}" >> variables.sh \
+    && echo "export MONGO_IP=${MONGO_IP}" >> variables.sh
 
 # Make entry_point.sh executable
 RUN chmod +x entry_point.sh

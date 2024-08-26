@@ -5,7 +5,7 @@
 #export PATH=$PATH:$pathA
 
 #write your password
-PGPASSWORD=$4
+PGPASSWORD=$5
 export PGPASSWORD
 
 #change the path to the file from which will be made restore
@@ -13,11 +13,11 @@ pathB=backups/
 #write this on the command line as the first parameter
 filename=$1
 #write your user
-dbUser=$3
+dbUser=$4
 #write your database
-database=$2
+database=$3
 #write your host
-host=localhost
+host=$2
 #write your port
 port=5432
 
