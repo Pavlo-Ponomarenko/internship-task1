@@ -7,9 +7,9 @@ pipeline {
     }
 
     stages {
-        stage('Clone Repository') {
+        stage('Checkout') {
             steps {
-                git 'https://github.com/Pavlo-Ponomarenko/internship-task1'
+                checkout scm
             }
         }
 
